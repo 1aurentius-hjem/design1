@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALAUDA & LAURENTIUS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111111;
+      --dark: #1c1c1c;
+      --mid: #555;
+      --light-gray: #f5f5f3;
+      --border: #ddd;
+      --accent: #2a6496;
+      --accent2: #1a4a6e;
+      --white: #ffffff;
+      --section-pad: 96px 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      font-weight: 600;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-text {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--black);
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      font-size: 9px;
+      color: var(--mid);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 86vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 72px;
+      position: relative;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 42%;
+      background: var(--light-gray);
+      z-index: 0;
+    }
+
+    /* Subtle accent stripe */
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: 42%;
+      top: 0; bottom: 0;
+      width: 4px;
+      background: var(--accent);
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    .hero h1 .amp {
+      color: var(--accent);
+      font-weight: 300;
+      font-family: 'Lora', serif;
+      font-style: italic;
+    }
+
+    .hero h1 .sub {
+      display: block;
+      font-weight: 300;
+      font-style: italic;
+      font-family: 'Lora', serif;
+      font-size: 0.5em;
+      color: var(--mid);
+      letter-spacing: 0.02em;
+      margin-top: 6px;
+    }
+
+    .hero-tagline {
+      margin-top: 24px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--mid);
+      max-width: 440px;
+      margin-top: 24px;
+      font-weight: 400;
+      line-height: 1.85;
+    }
+
+    .hero-cta {
+      margin-top: 44px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+      border: 2px solid var(--black);
+    }
+
+    .btn-dark:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--black);
+      border: 2px solid var(--black);
+    }
+
+    .btn-outline:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: var(--section-pad); }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+
+    .group-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--mid);
+      border-top: 3px solid var(--black);
+      padding-top: 16px;
+      margin: 64px 0 36px;
+    }
+
+    /* ── ABOUT ── */
+    #Om { background: var(--white); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .person-card {
+      border-top: 4px solid var(--accent);
+      padding-top: 32px;
+    }
+
+    .person-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      border: 3px solid var(--accent);
+      overflow: hidden;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mid);
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .person-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+
+    .person-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .person-card p {
+      font-size: 14px;
+      color: var(--mid);
+      margin-bottom: 14px;
+      line-height: 1.85;
+    }
+
+    /* ── VISION ── */
+    #Vision { background: var(--light-gray); }
+
+    .vision-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .vision-text p {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 22px;
+      line-height: 1.9;
+    }
+
+    .vision-aside {
+      background: var(--white);
+      border-top: 4px solid var(--black);
+      padding: 36px;
+    }
+
+    .vision-aside h3 {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+
+    .principle {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    .principle-arrow {
+      color: var(--accent);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── SERVICES ── */
+    #Raadgivning { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0;
+    }
+
+    .service-card {
+      border-left: 1px solid var(--border);
+      padding: 32px 32px 40px;
+      transition: background 0.2s;
+    }
+
+    .service-card:hover { background: var(--light-gray); }
+
+    .service-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+      color: var(--black);
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    /* ── PROJECTS ── */
+    #Projekter { background: var(--light-gray); }
+
+    .projects-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: start;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-meta {
+      padding-top: 4px;
+    }
+
+    .project-period {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .project-client {
+      font-size: 12px;
+      color: var(--mid);
+      font-style: italic;
+      font-family: 'Lora', serif;
+    }
+
+    .project-content h3 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .project-content p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .task-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .task-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(42,100,150,0.08);
+      padding: 4px 10px;
+    }
+
+    /* ── PARADIGME ── */
+    #Paradigme { background: var(--black); color: var(--white); }
+
+    #Paradigme .section-title { color: var(--white); }
+
+    .paradigme-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .paradigme-block {
+      border-top: 3px solid var(--accent);
+      padding-top: 32px;
+    }
+
+    .paradigme-block h3 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .paradigme-block p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 16px;
+      line-height: 1.85;
+    }
+
+    .paradigme-principle {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+    }
+
+    .paradigme-principle .arr {
+      color: var(--accent);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .tech-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── CONTACT ── */
+    #Kontakt { background: var(--light-gray); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-person {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .contact-person-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+
+    .contact-person-role {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .contact-detail {
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 3px;
+    }
+
+    .contact-detail a {
+      color: var(--mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+
+    .contact-detail a:hover { color: var(--accent); }
+
+    .contact-sidebar {
+      background: var(--white);
+      border-top: 4px solid var(--black);
+      padding: 36px;
+    }
+
+    .contact-sidebar h3 {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+
+    .contact-sidebar p {
+      font-size: 14px;
+      color: var(--mid);
+      margin-bottom: 20px;
+      line-height: 1.8;
+      font-style: italic;
+      font-family: 'Lora', serif;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a0a0a;
+      color: rgba(255,255,255,0.35);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 80px 28px 60px; }
+      .hero::after, .hero::before { display: none; }
+      .container { padding: 0 24px; }
+      .team-grid, .vision-layout, .paradigme-grid, .contact-grid { grid-template-columns: 1fr; }
+      .project-item { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">Identitet er integritet — Rådgivning hvor der tages ansvar</div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-mark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stylized A&L mark -->
+          <path d="M3 20L9 4l3 8-3 4h6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 4v12M14 4l5 8M14 12l5 8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="nav-logo-text">
+        Alauda &amp; Laurentius
+        <span>Rådgivende ingeniører &amp; jurister</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#Om">Om os</a></li>
+      <li><a href="#Vision">Vision</a></li>
+      <li><a href="#Raadgivning">Rådgivning</a></li>
+      <li><a href="#Projekter">Projekter</a></li>
+      <li><a href="#Kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Rådgivende ingeniører &amp; jurister</div>
+      <h1>
+        Alauda
+        <span class="amp">&amp;</span>
+        Laurentius<span class="sub">Rådgivning hvor der tages ansvar</span>
+      </h1>
+      <div class="hero-tagline">Identitet er integritet</div>
+      <p class="hero-sub">
+        Vi leverer projektstyring og juridisk rådgivning af høj kvalitet med fokus på AI-projektering, entrepriseret og faglig integritet — fra projektets start til dets aflevering.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-dark" href="#Raadgivning">Vores ydelser</a>
+        <a class="btn btn-outline" href="#Kontakt">Kontakt os</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="Om">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label">Hvem vi er</div>
+        <h2 class="section-title">Om os</h2>
+      </div>
+      <div class="team-grid">
+
+        <div class="person-card fade-up">
+          <div class="person-avatar">L</div>
+          <div class="person-name">Lars Emmery-Nørholm</div>
+          <div class="person-title">Bygningsingeniør · DTU 2011</div>
+          <p>Gennem de sidste 15 år har jeg opbygget en solid erfaring med projektering og projektledelse inden for store infrastrukturelle anlægsprojekter.</p>
+          <p>Jeg har in-house erfaring fra de store rådgivningsvirksomheder og kender branchens fordele og ulemper. Jeg har desuden stor erfaring med udbudsmateriale og entrepriseretten.</p>
+          <p>I dag er jeg selvstændig og tilbyder rådgivning inden for især vejafvanding, tankanlæg og stål.</p>
+        </div>
+
+        <div class="person-card fade-up">
+          <div class="person-avatar">L</div>
+          <div class="person-name">Lærke Emmery-Nørholm</div>
+          <div class="person-title">Jurist · KU 2019 · Lærer 2010</div>
+          <p>I dag arbejder jeg med juridisk rådgivning med fokus på kontraktret og entrepriseret.</p>
+          <p>Jeg har desuden erfaring med strukturel planlægning og generel juridisk kvalitetssikring under både nationale regler, EU-regler og internationale samarbejdsorganisationer.</p>
+          <p>Som mødeleder og juridisk sparringspartner sikrer jeg et solidt fundament i alle projektfaser.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section id="Vision">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label">Vores tilgang</div>
+        <h2 class="section-title">Vision</h2>
+      </div>
+      <div class="vision-layout">
+        <div class="vision-text fade-up">
+          <p>Vi leverer projektstyring af høj kvalitet med fokus på AI-projektering. Den faglige integritet er vores brand, og vi er altid garant for, at I som kunde oplever dette fra start til slut i projektet.</p>
+          <p>Med flere års erfaring inden for højhastighedsprojektering har vi set, hvordan projekter kompromitteres af mangelfulde og tidspressede løsninger, fordi planlægning og detaljegraden af projektindholdet nedprioriteres på bekostning af faglig integritet. Dette får I ikke hos os.</p>
+          <p>Den teknologiske udvikling går hurtigt, og det er et grundvilkår at være på forkant med den nyeste viden. Vi er altid omstillingsparate og hurtige til at implementere nye værktøjer, der sikrer fortsat høj og forbedret kvalitet.</p>
+        </div>
+        <div class="vision-aside fade-up">
+          <h3>Vores løfte til kunden</h3>
+          <div class="principle">
+            <span class="principle-arrow">›</span>
+            <span>Du kan følge med i, hvem der arbejder med dine data, hvad der gøres, og hvor det sker.</span>
+          </div>
+          <div class="principle">
+            <span class="principle-arrow">›</span>
+            <span>Du har 100% adgang og 100% ejerskab af dine data.</span>
+          </div>
+          <div class="principle">
+            <span class="principle-arrow">›</span>
+            <span>Du kan anvende dine data 100% frit uden omkostninger efter aflevering.</span>
+          </div>
+          <div class="principle">
+            <span class="principle-arrow">›</span>
+            <span>Projekter leveres i 100% åbne dataformater.</span>
+          </div>
+          <div class="principle">
+            <span class="principle-arrow">›</span>
+            <span>Ingeniørdesign udføres med 100% opensource-programmer.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="Raadgivning">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label">Hvad vi tilbyder</div>
+        <h2 class="section-title">Rådgivningsydelser</h2>
+        <p style="font-size:15px; color:var(--mid); max-width:600px; margin-bottom:48px; line-height:1.85;">Alauda &amp; Laurentius tilbyder rådgivning baseret på ansvar, faglighed og integritet. Vi arbejder med et klart fokus på kvalitet og tillid i samarbejdet med vores klienter.</p>
+      </div>
+
+      <div class="group-label fade-up">Ingeniørfaglige ydelser</div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <h3>Vejafvanding</h3>
+          <p>Hydrauliske beregninger og design efter vejreglerne. Projektering og 3D-modellering (DANDAS) for afvandingssystemer på store infrastrukturprojekter.</p>
+        </div>
+        <div class="service-card fade-up">
+          <h3>Tankanlæg &amp; stål</h3>
+          <p>Konceptdesign, projektering og tilstandsrapporter for tanke, rørsystemer og stålkonstruktioner. Udbud, specifikationer og indkøb.</p>
+        </div>
+        <div class="service-card fade-up">
+          <h3>Projektledelse</h3>
+          <p>Projektstyring fra konceptfase til aflevering. Byggemøder, økonomi- og kontraktstyring, DALUX-projektadministration og koordinering.</p>
+        </div>
+        <div class="service-card fade-up">
+          <h3>Tilsyn &amp; bygherrerådgivning</h3>
+          <p>Bygherre-repræsentation, daglig rundering, fagtilsyn på beton, stål, jord og kloakarbejder. Ekstern koordinering med myndigheder og forsyningsselskaber.</p>
+        </div>
+        <div class="service-card fade-up">
+          <h3>AI-projektering</h3>
+          <p>Projektering med kunstig intelligens som grundlag — med håndberegningskontrol på kritiske emner. Pr. 2026 anvendes Claude Sonnet og Mistral Le Chat.</p>
+        </div>
+        <div class="service-card fade-up">
+          <h3>BIM &amp; 3D-modellering</h3>
+          <p>3D/2D-tegninger for afløb, bro og tunnel. BIM/CAD (VDC), besigtigelser samt GPS og laser-opmåling.</p>
+        </div>
+      </div>
+
+      <div class="group-label fade-up">Juridiske ydelser</div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <h3>Kontraktret &amp; entrepriseret</h3>
+          <p>Grundig juridisk gennemgang og udarbejdelse af kontrakter tilpasset det individuelle byggeri, med detaljeringsgrad der afspejler tegnings- og tilbudslister.</p>
+        </div>
+        <div class="service-card fade-up">
+          <h3>Strukturel planlægning</h3>
+          <p>Juridisk kvalitetssikring af planlægningsgrundlag under nationale regler, EU-regler og internationale samarbejdsorganisationer.</p>
+        </div>
+        <div class="service-card fade-up">
+          <h3>Mødeledelse</h3>
+          <p>Professionel mødeledelse der sikrer klare beslutninger, dokumenterede aftaler og struktureret fremdrift i byggeprojektet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="Projekter">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label">Udvalgte sager</div>
+        <h2 class="section-title">Projekter</h2>
+      </div>
+
+      <div class="projects-list">
+
+        <div class="project-item fade-up">
+          <div class="project-meta">
+            <div class="project-period">jan. 2025 – sep. 2025</div>
+            <div class="project-client">By &amp; Havn</div>
+          </div>
+          <div class="project-content">
+            <h3>Byggemodning af Sundkrogsgade (2. etape)</h3>
+            <p>Bygherre-repræsentation og projektstyring for Udviklingsselskabet By &amp; Havn med fuldt ansvar for bygge-, teknik- og økonomimøder samt koordinering med HOFOR og Københavns Kommune.</p>
+            <div class="task-list">
+              <span class="task-tag">Bygherre</span>
+              <span class="task-tag">Kontraktstyring</span>
+              <span class="task-tag">DALUX</span>
+              <span class="task-tag">Arealdisponering</span>
+              <span class="task-tag">Tilsyn</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item fade-up">
+          <div class="project-meta">
+            <div class="project-period">jan. 2025 – aug. 2025</div>
+            <div class="project-client">By &amp; Havn</div>
+          </div>
+          <div class="project-content">
+            <h3>Røerkanal Vest — spuns og jordarbejder</h3>
+            <p>Bygherre-rådgivning for By &amp; Havn med udledningstilladelser, aftaler om arealinddragelse og dispositionsret, DALUX-projektadministration og koordinering med HOFOR.</p>
+            <div class="task-list">
+              <span class="task-tag">Bygherre</span>
+              <span class="task-tag">Udledning</span>
+              <span class="task-tag">Arealinddragelse</span>
+              <span class="task-tag">Kontraktstyring</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item fade-up">
+          <div class="project-meta">
+            <div class="project-period">feb. 2021 – feb. 2024</div>
+            <div class="project-client">Ramboll</div>
+          </div>
+          <div class="project-content">
+            <h3>Letbanen L3 (CG Jensen) — Projektering</h3>
+            <p>Projektering af afløb fra Rødovre til Lyngby, hydrauliske beregninger og design efter vejreglerne samt 3D-modellering i DANDAS.</p>
+            <div class="task-list">
+              <span class="task-tag">Vejafvanding</span>
+              <span class="task-tag">Hydraulik</span>
+              <span class="task-tag">3D-modellering</span>
+              <span class="task-tag">DANDAS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item fade-up">
+          <div class="project-meta">
+            <div class="project-period">jan. 2019 – feb. 2022</div>
+            <div class="project-client">Tyréns Danmark</div>
+          </div>
+          <div class="project-content">
+            <h3>Letbanen L3 (CG Jensen) — Projektering</h3>
+            <p>Projektering af afløb, 3D-modellering af bro og tunnel, 3D/2D-tegninger for afløb, bro og tunnel samt BIM/CAD (VDC).</p>
+            <div class="task-list">
+              <span class="task-tag">BIM/VDC</span>
+              <span class="task-tag">Bro &amp; tunnel</span>
+              <span class="task-tag">3D/2D-tegninger</span>
+              <span class="task-tag">Besigtigelser</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item fade-up">
+          <div class="project-meta">
+            <div class="project-period">2017 – 2018</div>
+            <div class="project-client">COWI</div>
+          </div>
+          <div class="project-content">
+            <h3>HOFOR TPW ventil og varmevekslerstation</h3>
+            <p>Projekterende statiker for stål- og betonkonstruktioner, projektering af afløb og 3D-modellering af bygning og rørgallerier. Fagtilsyn og myndighedsbehandling.</p>
+            <div class="task-list">
+              <span class="task-tag">Statik</span>
+              <span class="task-tag">Stål &amp; beton</span>
+              <span class="task-tag">3D-modellering</span>
+              <span class="task-tag">Tilsyn</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item fade-up">
+          <div class="project-meta">
+            <div class="project-period">2015 – 2017</div>
+            <div class="project-client">COWI</div>
+          </div>
+          <div class="project-content">
+            <h3>HOFOR — Damprør fra Amagerværket til Fredensplads skakt</h3>
+            <p>Projekterende statiker for stål- og betonkonstruktioner, 3D-modellering, 2D-tegner og tegnestueleder for stålkonstruktioner samt fagtilsyn.</p>
+            <div class="task-list">
+              <span class="task-tag">Statik</span>
+              <span class="task-tag">Tegnestueleder</span>
+              <span class="task-tag">Stålkonstruktioner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item fade-up">
+          <div class="project-meta">
+            <div class="project-period">2016</div>
+            <div class="project-client">COWI</div>
+          </div>
+          <div class="project-content">
+            <h3>Statoil — Skum- og brandvandsprojekt, Hedehusene</h3>
+            <p>Projekterende statiker med stål- og betonkonstruktioner, VDC med fuld interface mod eksisterende konstruktioner, 3D/2D-tegner, opmåling og indkøb af pumper og udstyr.</p>
+            <div class="task-list">
+              <span class="task-tag">Statik</span>
+              <span class="task-tag">VDC</span>
+              <span class="task-tag">Opmåling</span>
+              <span class="task-tag">Indkøb</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item fade-up">
+          <div class="project-meta">
+            <div class="project-period">2012 – 2013</div>
+            <div class="project-client">COWI</div>
+          </div>
+          <div class="project-content">
+            <h3>FBE-POL — Konceptdesign, projektkoordinator og indkøber</h3>
+            <p>Konceptdesign for oplagring og distribution af petroleum, olie og smøremidler. Indkøb af nyt tankanlæg inkl. distributionsrørsystem og import/eksport-system. IKT-ansvarlig og datablad-ansvarlig.</p>
+            <div class="task-list">
+              <span class="task-tag">Tankanlæg</span>
+              <span class="task-tag">Konceptdesign</span>
+              <span class="task-tag">IKT-ansvarlig</span>
+              <span class="task-tag">Udbud</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PARADIGME -->
+  <section id="Paradigme">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label" style="color:rgba(255,255,255,0.4);">Vores metode</div>
+        <h2 class="section-title">Teknisk &amp; juridisk paradigme</h2>
+      </div>
+      <div class="paradigme-grid">
+
+        <div class="paradigme-block fade-up">
+          <h3>Teknisk paradigme</h3>
+          <p>Alauda &amp; Laurentius projekterer kun med kunstig intelligens — det er en nødvendighed for at klare fremtidens udfordringer. Kontrolberegninger udføres altid som håndberegning på kritiske emner.</p>
+          <div class="paradigme-principle">
+            <span class="arr">›</span>
+            <span>Projekter levers i 100% åbne dataformater</span>
+          </div>
+          <div class="paradigme-principle">
+            <span class="arr">›</span>
+            <span>Ingeniørdesign udføres med 100% opensource-programmer</span>
+          </div>
+          <div class="paradigme-principle">
+            <span class="arr">›</span>
+            <span>AI-design med Claude Sonnet 4.6 og Mistral Le Chat (pr. 2026)</span>
+          </div>
+          <div class="paradigme-principle">
+            <span class="arr">›</span>
+            <span>Byggestyring via Dalux — 100% danskejet og anbefalet</span>
+          </div>
+          <div class="tech-badge">Anbefalet: Dalux byggestyringssoftware</div>
+        </div>
+
+        <div class="paradigme-block fade-up">
+          <h3>Juridisk paradigme</h3>
+          <p>Alauda &amp; Laurentius er garant for grundighed i din kontrakt. Vi arbejder kun med et godt juridisk håndværk, der integrerer den essentielle planlægning i henhold til de faktiske aktiviteter og tidsplaner.</p>
+          <div class="paradigme-principle">
+            <span class="arr">›</span>
+            <span>En grundighed der sikrer mod misforståelser af hvem, hvor, hvornår og hvad</span>
+          </div>
+          <div class="paradigme-principle">
+            <span class="arr">›</span>
+            <span>Kontrakten skrives til det individuelle byggeri</span>
+          </div>
+          <div class="paradigme-principle">
+            <span class="arr">›</span>
+            <span>Detaljeringsgrad der afspejler tegnings- og tilbudslistene</span>
+          </div>
+          <div class="paradigme-principle">
+            <span class="arr">›</span>
+            <span>EU-regler og internationale samarbejdsorganisationer inddrages</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="Kontakt">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label">Kom i kontakt</div>
+        <h2 class="section-title">Kontakt</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="fade-up">
+          <div class="contact-person">
+            <div class="contact-avatar">L</div>
+            <div>
+              <div class="contact-person-name">Lars Emmery-Nørholm</div>
+              <div class="contact-person-role">Bygningsingeniør</div>
+              <div class="contact-detail"><a href="mailto:lars@1aurentius.dk">lars@1aurentius.dk</a></div>
+              <div class="contact-detail"><a href="tel:+4521901844">+45 21 90 18 44</a></div>
+            </div>
+          </div>
+          <div class="contact-person">
+            <div class="contact-avatar">L</div>
+            <div>
+              <div class="contact-person-name">Lærke Emmery-Nørholm</div>
+              <div class="contact-person-role">Jurist</div>
+              <div class="contact-detail"><a href="mailto:laerke@alauda.dk">laerke@alauda.dk</a></div>
+              <div class="contact-detail"><a href="tel:+4530555176">+45 30 55 51 76</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-sidebar fade-up">
+          <h3>Vi kommer gerne til jer</h3>
+          <p>"Identitet er integritet — og det gælder også måden vi møder vores klienter på. Alauda &amp; Laurentius tilbyder rådgivning baseret på ansvar, faglighed og tillid."</p>
+          <a class="btn btn-dark" href="mailto:lars@1aurentius.dk">Skriv til os</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2026 Alauda &amp; Laurentius ApS — Lærke &amp; Lars</div>
+    <div>Ingeniører &amp; Jurister · Danmark</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+      el.style.transitionDelay = (i % 4) * 0.09 + 's';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
